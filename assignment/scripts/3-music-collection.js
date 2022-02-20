@@ -3,6 +3,7 @@ console.log('***** Music Collection *****')
 let collection = [];
 
 function addToCollection( title, artist, yearPublished ){
+console.log('in addToCollection')
   let record = {
     title : title,
     artist : artist,
@@ -52,3 +53,28 @@ console.log( findByArtist('GZA', collection) );
 console.log( findByArtist('Bing Crosby', collection) );
 
 console.log( findByArtist('MF DOOM', collection) );
+
+function search ( searchArtist, searchYear ){
+  console.log('in search function');
+  let searchResults = [];
+  let searchObject = {
+    artist: searchArtist,
+    year:  searchYear
+  }//end searchObject
+  for(record of collection){
+  if (searchObject.artist == record.artist && searchObject.year == record.year){
+    searchResults.push(record);}
+    else if (searchObject.artist == record.artist && searchObject.year == null){
+    searchResults.push(record);}
+    else if (searchObject.artist == null && searchObject.year == null){
+    searchResults.push(collection);
+    }//end if statment
+  }//end for loop
+  return searchResults
+}//end search function
+
+console.log( search( 'Viktor Vaughn', ));
+
+console.log( search( 'Viktor Vaughn', 1999));
+
+console.log( search());
